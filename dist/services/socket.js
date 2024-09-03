@@ -15,12 +15,11 @@ const messages_1 = require("../models/messages");
 class SocketIO {
     constructor() {
         this._io = new socket_io_1.Server({ cors: {
-                origin: "http://localhost:3000",
+                origin: "*",
                 credentials: true,
                 allowedHeaders: ["userid"]
             } });
         this.userIdAndSocketIdTable = new Map();
-        //  sub.subscribe("messages")
     }
     get io() {
         return this._io;
