@@ -46,7 +46,7 @@ function initServer() {
             origin: process.env.CLIENT_URL,
             methods: ["GET", "POST", "PUT", "DELETE"],
             credentials: true,
-            allowedHeaders: ["*"]
+            allowedHeaders: ["content-type"]
         }));
         // initializing static folder #uploads
         app.use("/uploads", express_1.default.static("uploads"));

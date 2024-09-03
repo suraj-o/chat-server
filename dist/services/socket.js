@@ -15,7 +15,7 @@ const messages_1 = require("../models/messages");
 class SocketIO {
     constructor() {
         this._io = new socket_io_1.Server({ cors: {
-                origin: "*",
+                origin: process.env.CLIENT_URL,
                 credentials: true,
                 allowedHeaders: ["userid"]
             } });

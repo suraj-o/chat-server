@@ -17,7 +17,7 @@ export class SocketIO{
     constructor(){
         this._io= new Server(       
         {cors:{
-            origin:"*",
+            origin:process.env.CLIENT_URL as string,
             credentials:true,
             allowedHeaders:["userid"]
         }});

@@ -36,7 +36,7 @@ async function initServer(){
         origin:process.env.CLIENT_URL as string,
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials:true,
-        allowedHeaders:["*"]
+        allowedHeaders:["content-type"]
     }));
 
     // initializing static folder #uploads
