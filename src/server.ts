@@ -1,19 +1,18 @@
-import {createServer} from "http"
-import express from "express"
+import express from "express";
+import { createServer } from "http";
 import { SocketIO } from "./services/socket";
-import {connectDb} from "./utils/connectDb"
+import { connectDb } from "./utils/connectDb";
 
 // importa middleware
+import cookieParser from "cookie-parser";
+import cors from "cors";
 import "dotenv/config";
-import cors from "cors"
 import morgan from "morgan";
 import { errorMiddleware } from "./middleware/ErrorHandlers";
-import cookieParser from "cookie-parser";
 
 // importes all routes
+import chatRouter from "./routes/chat";
 import userRouter from "./routes/user";
-import chatRouter from "./routes/chat"
-import { startMessagesConsuming } from "./services/kafka";
 
 // deafine port and socket
 const PORT=process.env.PORT || 9000;

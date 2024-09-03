@@ -1,7 +1,6 @@
-import { Server } from "socket.io";
-import { pub, sub } from "./redis";
-import { produceMessage } from "./kafka";
+import { Server, Socket } from "socket.io";
 import { Messages } from "../models/messages";
+import { DefaultEventsMap } from "socket.io/dist/typed-events";
 
 interface MessageType {
     chatId:string,
@@ -18,12 +17,11 @@ export class SocketIO{
     constructor(){
         this._io= new Server(       
         {cors:{
-            origin:"http://localhost:3000",
+            origin:process.env.CLIENT_URL as string,
             credentials:true,
             allowedHeaders:["userid"]
         }});
         this.userIdAndSocketIdTable=new Map();
-        //  sub.subscribe("messages")
     }
 
     get io(){
@@ -33,7 +31,7 @@ export class SocketIO{
       initSocketService(){
         const io =this._io;
 
-        io.on("connect",async(socket)=>{
+        io.on("connect",async(socket: Socket<DefaultEventsMap, DefaultEventsMap, DefaultEventsMap, any>)=>{
             const userId=socket.handshake.headers["userid"]?.toString();
                 this.userIdAndSocketIdTable.set(userId,socket.id)
                 
