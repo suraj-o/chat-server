@@ -42,7 +42,12 @@ function initServer() {
         app.use(express_1.default.urlencoded({ extended: false }));
         app.use(express_1.default.json());
         app.use((0, cookie_parser_1.default)());
-        app.use((0, cors_1.default)());
+        app.use((0, cors_1.default)({
+            origin: process.env.CLIENT_URL,
+            methods: ["GET", "POST", "PUT", "DELETE"],
+            credentials: true,
+            allowedHeaders: ["*"]
+        }));
         // initializing static folder #uploads
         app.use("/uploads", express_1.default.static("uploads"));
         // routes
