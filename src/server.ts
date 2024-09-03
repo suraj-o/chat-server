@@ -33,7 +33,7 @@ async function initServer(){
     app.use(express.json());
     app.use(cookieParser());
     app.use(cors({
-        origin:process.env.CLIENT_URL as string,
+        origin:"*",
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials:true,
     }));
