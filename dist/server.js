@@ -43,7 +43,7 @@ function initServer() {
         app.use(express_1.default.json());
         app.use((0, cookie_parser_1.default)());
         app.use((0, cors_1.default)({
-            origin: process.env.CLIENT_URL,
+            origin: "*",
             methods: ["GET", "POST", "PUT", "DELETE"],
             credentials: true,
         }));
