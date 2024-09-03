@@ -32,11 +32,7 @@ async function initServer(){
     app.use(express.urlencoded({extended:false}))
     app.use(express.json());
     app.use(cookieParser());
-    app.use(cors({
-        origin:"*",
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        credentials:true,
-    }));
+    app.use(cors());
 
     // initializing static folder #uploads
     app.use("/uploads",express.static("uploads"))
