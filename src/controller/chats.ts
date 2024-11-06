@@ -3,6 +3,7 @@ import { TryCatch } from "../middleware/ErrorHandlers";
 import { Chat } from "../models/chats";
 import { Messages } from "../models/messages";
 import { verifyToken } from "../utils/sendCookies";
+import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
 
 
 
@@ -10,7 +11,7 @@ export const getChatlists=TryCatch(async(req:Request,res:Response,next:NextFunct
     const id =verifyToken(req.cookies["_id"])
 
     const chats=await Chat.find({members:id}).populate("members","name avatar")
-
+    console.log("checking")
     res.status(201).json({
         success:true,
         message:chats
