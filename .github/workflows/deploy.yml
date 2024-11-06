@@ -24,7 +24,7 @@ jobs:
         context: .
         file: ./dockerfile
         push: true
-        tags: suraj266/chat-server-backend
+        tags: suraj266/chat-server-backend:latest
 
     - name: verify image
       run: docker pull suraj266/chat-server-backend
