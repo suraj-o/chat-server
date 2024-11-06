@@ -52,7 +52,6 @@ export class SocketIO{
                 //     to:newMessage.to,
                 //     message:newMessage.message
                 // })
-                
                 const getRecvier=this.userIdAndSocketIdTable.get(newMessage.to)
                 io.to([socket.id,getRecvier]).emit("NEW_MESSAGE",newMessage)
                 try {
@@ -66,6 +65,12 @@ export class SocketIO{
                    }catch(error){
                     console.log(true)
                    }
+            })
+
+            socket.on("REQUEST_ACCEPTED",(data)=>{
+                console.log(data,"me hi hu")
+                let reciver= this.userIdAndSocketIdTable.get(data)
+                io.to(reciver).emit("REQUEST_ACCEPTED_DONE","DONE")
             })
 
 

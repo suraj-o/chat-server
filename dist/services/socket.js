@@ -59,6 +59,11 @@ class SocketIO {
                     console.log(true);
                 }
             }));
+            socket.on("REQUEST_ACCEPTED", (data) => {
+                console.log(data, "me hi hu");
+                let reciver = this.userIdAndSocketIdTable.get(data);
+                io.to(reciver).emit("REQUEST_ACCEPTED_DONE", "DONE");
+            });
             // facing issue from redis
             //  sub.on("message",async(channel,messages)=>{
             //     if(channel==="messages"){
