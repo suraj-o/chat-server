@@ -24,7 +24,7 @@ jobs:
         context: .
         file: dockerfile
         push: true
-        tags: suraj266/chat-server-backend:latest  # Replace with your Docker Hub username and repository
+        tags: suraj266/chat-backend:latest  # Replace with your Docker Hub username and repository
 
     - name: Verify Pushed Image
-      run: suraj266/chat-server-backend:latest  #
+      run: suraj266/chat-backend:latest  #
