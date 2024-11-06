@@ -27,4 +27,4 @@ jobs:
         tags: suraj266/chat-backend:latest  # Replace with your Docker Hub username and repository
 
     - name: Verify Pushed Image
-      run: suraj266/chat-backend:latest  #
+      run: docker pull suraj266/chat-backend:latest  #
