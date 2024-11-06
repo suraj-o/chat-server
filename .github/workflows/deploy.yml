@@ -1,0 +1,30 @@
+name: Build And Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+
+    - name: Login into docker hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secret:DOCKER-USERNAME }}
+        password: ${{ secret:DOCKER-PASSWORD }}
+
+    - name: Push it to dockerhub
+      uses: docker/build-push-action@v6
+      with:
+        context:
+        file: ./dockerfile
+        push: true
+        tags: suraj266/chat-server-backend
+
+    - name: verify image
+      run: docker pull suraj266/chat-server-backend
