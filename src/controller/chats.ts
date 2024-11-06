@@ -34,6 +34,7 @@ export const getChatMessages=TryCatch(async(req:Request,res:Response,next:NextFu
     const {id}=req.query;
     const getMessage=await Messages.find({chatId:id});
 
+    console.log("hey checking")
     res.status(200).json({
         success:true,
         messages:getMessage
