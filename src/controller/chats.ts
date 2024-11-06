@@ -33,7 +33,7 @@ export const getChatDetail=TryCatch(async(req:Request,res:Response,next:NextFunc
 export const getChatMessages=TryCatch(async(req:Request,res:Response,next:NextFunction)=>{
     const {id}=req.query;
     const getMessage=await Messages.find({chatId:id});
-
+    console.log("Addid")
     res.status(200).json({
         success:true,
         messages:getMessage
