@@ -10,7 +10,7 @@ export const getChatlists=TryCatch(async(req:Request,res:Response,next:NextFunct
     const id =verifyToken(req.cookies["_id"])
 
     const chats=await Chat.find({members:id}).populate("members","name avatar")
-
+    console.log("btao")
     res.status(201).json({
         success:true,
         message:chats
